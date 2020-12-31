@@ -1,0 +1,280 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 85,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0 | 1 | 2\n",
+      "----------\n",
+      "3 | 4 | 5\n",
+      "-----------\n",
+      "6 | 7 | 8\n",
+      "Enter Position: 5\n",
+      "0 | 1 | 2\n",
+      "----------\n",
+      "3 | 4 | x\n",
+      "-----------\n",
+      "6 | 7 | 8\n",
+      "3\n",
+      "0 | 1 | 2\n",
+      "----------\n",
+      "o | 4 | x\n",
+      "-----------\n",
+      "6 | 7 | 8\n",
+      "Enter Position: 0\n",
+      "x | 1 | 2\n",
+      "----------\n",
+      "o | 4 | x\n",
+      "-----------\n",
+      "6 | 7 | 8\n",
+      "1\n",
+      "x | o | 2\n",
+      "----------\n",
+      "o | 4 | x\n",
+      "-----------\n",
+      "6 | 7 | 8\n"
+     ]
+    }
+   ],
+   "source": [
+    "##ACTUAL_CODE \n",
+    "import random\n",
+    "\n",
+    "def actualboard(board):\n",
+    "    print(board[0],\"|\",board[1],\"|\",board[2])\n",
+    "    print(\"----------\")\n",
+    "    print(board[3],\"|\",board[4],\"|\",board[5])\n",
+    "    print(\"-----------\")\n",
+    "    print(board[6],\"|\",board[7],\"|\",board[8])\n",
+    "\n",
+    "board = [0,1,2,3,4,5,6,7,8]\n",
+    "\n",
+    "actualboard(board)\n",
+    "\n",
+    "def player1():\n",
+    "    play= input(\"Enter Position: \")\n",
+    "    board[int(play)]= \"x\"\n",
+    "    actualboard(board)\n",
+    "\n",
+    "def player2():\n",
+    "    play2=(random.choice(board))\n",
+    "    print(play2)\n",
+    "    if board[int(play2)] == 0 or 1 or 2 or 3 or 4 or 5 or 6 or 7 or 8:\n",
+    "        board[int(play2)]=\"o\"\n",
+    "    else:\n",
+    "        player2()\n",
+    "    actualboard(board)\n",
+    "\n",
+    "def checkwin():\n",
+    "    if board[0]==board[4]==board[8] == \"x\":       ##diagonal1\n",
+    "        print(\"Player 1, you win!\")\n",
+    "    elif board[2]==board[4]==board[6] == \"x\":     ##diagonal2\n",
+    "        print(\"Player 1, you win!\")\n",
+    "    elif board[0]==board[1]==board[2] == \"x\":      ##toprow\n",
+    "        print(\"Player 1, you win!\")\n",
+    "    elif board[3]==board[4]==board[5] == \"x\":      ##middlerow\n",
+    "        print(\"Player 1, you win!\")\n",
+    "    elif board[6]==board[7]==board[8] == \"x\":      ##bottomrow\n",
+    "        print(\"Player 1, you win!\")  \n",
+    "    elif board[0]==board[3]==board[6] == \"x\":      ##vertical1\n",
+    "        print(\"Player 1, you win!\") \n",
+    "    elif board[1]==board[4]==board[7] == \"x\":      ##verticalmiddle\n",
+    "        print(\"Player 1, you win!\") \n",
+    "    elif board[2]==board[5]==board[8] == \"x\":      ##vertical3\n",
+    "        print(\"Player 1, you win!\") \n",
+    "    else:\n",
+    "        print(\"Player 1, you lose!\")\n",
+    "        return(False)\n",
+    "\n",
+    "        \n",
+    "    \n",
+    "##def playgame():\n",
+    "    ##while checkwin == False:\n",
+    "        player1()\n",
+    "        player2()\n",
+    "    \n",
+    "    \n",
+    "\n",
+    "player1()\n",
+    "player2()\n",
+    "player1()\n",
+    "player2()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 89,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Player 1, you win!\n"
+     ]
+    }
+   ],
+   "source": [
+    "##testing checkwin function\n",
+    "board=[0,1,\"x\",3,\"x\",5,\"x\",7,8]\n",
+    "\n",
+    "def checkwin():\n",
+    "    if board[0]==board[4]==board[8] == \"x\":       ##diagonal1\n",
+    "        print(\"Player 1, you win!\")\n",
+    "    elif board[2]==board[4]==board[6] == \"x\":     ##diagonal2\n",
+    "        print(\"Player 1, you win!\")\n",
+    "    elif board[0]==board[1]==board[2] == \"x\":      ##toprow\n",
+    "        print(\"Player 1, you win!\")\n",
+    "    elif board[3]==board[4]==board[5] == \"x\":      ##middlerow\n",
+    "        print(\"Player 1, you win!\")\n",
+    "    elif board[6]==board[7]==board[8] == \"x\":      ##bottomrow\n",
+    "        print(\"Player 1, you win!\")  \n",
+    "    elif board[0]==board[3]==board[6] == \"x\":      ##vertical1\n",
+    "        print(\"Player 1, you win!\") \n",
+    "    elif board[1]==board[4]==board[7] == \"x\":      ##verticalmiddle\n",
+    "        print(\"Player 1, you win!\") \n",
+    "    elif board[2]==board[5]==board[8] == \"x\":      ##vertical3\n",
+    "        print(\"Player 1, you win!\") \n",
+    "    else:\n",
+    "        print(\"Player 1, you lose!\")\n",
+    "        return(False)\n",
+    "        \n",
+    "checkwin()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0 | 1 | 2\n",
+      "----------\n",
+      "3 | 4 | 5\n",
+      "-----------\n",
+      "6 | 7 | 8\n",
+      "Enter Position: 1\n",
+      "0 | x | 2\n",
+      "----------\n",
+      "3 | 4 | 5\n",
+      "-----------\n",
+      "6 | 7 | 8\n"
+     ]
+    }
+   ],
+   "source": [
+    "##testing player1 function \n",
+    "import random\n",
+    "\n",
+    "def actualboard(board):\n",
+    "    print(board[0],\"|\",board[1],\"|\",board[2])\n",
+    "    print(\"----------\")\n",
+    "    print(board[3],\"|\",board[4],\"|\",board[5])\n",
+    "    print(\"-----------\")\n",
+    "    print(board[6],\"|\",board[7],\"|\",board[8])\n",
+    "\n",
+    "board = [0,1,2,3,4,5,6,7,8]\n",
+    "\n",
+    "actualboard(board)\n",
+    "\n",
+    "def player1():\n",
+    "    play= input(\"Enter Position: \")\n",
+    "    board[int(play)]= \"x\"\n",
+    "    actualboard(board)\n",
+    "player1()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 84,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0 | 1 | 2\n",
+      "----------\n",
+      "3 | 4 | 5\n",
+      "-----------\n",
+      "6 | 7 | 8\n",
+      "1\n",
+      "0 | o | 2\n",
+      "----------\n",
+      "3 | 4 | 5\n",
+      "-----------\n",
+      "6 | 7 | 8\n"
+     ]
+    }
+   ],
+   "source": [
+    "##testing player2 function \n",
+    "import random\n",
+    "\n",
+    "def actualboard(board):\n",
+    "    print(board[0],\"|\",board[1],\"|\",board[2])\n",
+    "    print(\"----------\")\n",
+    "    print(board[3],\"|\",board[4],\"|\",board[5])\n",
+    "    print(\"-----------\")\n",
+    "    print(board[6],\"|\",board[7],\"|\",board[8])\n",
+    "\n",
+    "board = [0,1,2,3,4,5,6,7,8]\n",
+    "\n",
+    "actualboard(board)\n",
+    "\n",
+    "def player2():\n",
+    "    play2=(random.choice(board))\n",
+    "    print(play2)\n",
+    "    if board[int(play2)] == 0 or 1 or 2 or 3 or 4 or 5 or 6 or 7 or 8:\n",
+    "        board[int(play2)]=\"o\"\n",
+    "    else:\n",
+    "        player2()\n",
+    "    actualboard(board)\n",
+    "player2()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
